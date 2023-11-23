@@ -1,4 +1,3 @@
-import firebase, { getApps } from "firebase/app";
 import "firebase/auth";
 import { getAuth } from "firebase/auth";
 import "firebase/firestore"
