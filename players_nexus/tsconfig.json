@@ -35,11 +35,12 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/**/*",
-    "components",
-    "pages",
+    "src/pages",
     "lib"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "components/Navbar.tsx",
+    "styles/globals.css"
   ]
 }
