@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Friends() {
-  return (
-    <div>Friends</div>
-  )
+  return <div>Friends</div>;
 }
 
-export default Friends
+export default Friends;

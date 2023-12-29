@@ -1,9 +1,9 @@
 // components/GameCard.tsx
-import React from 'react';
-import { Game } from '../types';
+import React from "react";
+import { Game } from "../types";
 
 const GameCard: React.FC<{ game: Game }> = ({ game }) => {
-  const imageUrl = game.cover?.url || '/images/default-cover.jpg'; // Use the actual default image path
+  const imageUrl = game.cover?.url || "/images/default-cover.jpg"; // Use the actual default image path
 
   return (
     <div className="game-card bg-gray-800 rounded overflow-hidden shadow-lg">
