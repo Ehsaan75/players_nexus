@@ -39,4 +39,14 @@ const getGameBySlug = async (slug: string) => {
   }
 };
 
-export default { getGames, getGenreList, getGameListByGenreId, getGameBySlug };
+const getGameScreenshots = async (gameId: number) => {
+  try {
+    const response = await axiosInstance.get(`/games/${gameId}/screenshots?key=${key}`);
+    return response.data.results;
+  } catch (error) {
+    console.error("Error fetching game screenshots:", error);
+    throw error;
+  }
+};
+
+export default { getGames, getGenreList, getGameListByGenreId, getGameBySlug, getGameScreenshots };

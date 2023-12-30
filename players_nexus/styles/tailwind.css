@@ -16,3 +16,30 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+/* Other styles remain the same */
+
+/* Specific scrollbar styles for the description box */
+.description-scrollbar::-webkit-scrollbar {
+  display: block;
+}
+
+.description-scrollbar {
+  -ms-overflow-style: auto; /* IE and Edge */
+  scrollbar-width: auto; /* Firefox */
+}
+
+/* Custom scrollbar styles (optional) */
+.description-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.description-scrollbar::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 10px;
+}
+
+.description-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
