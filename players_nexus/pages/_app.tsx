@@ -5,6 +5,7 @@ import { AppProps } from "next/app";
 import "../styles/tailwind.css";
 import LoadingCircle from "../components/LoadingCircle";
 
+
 function MyApp({ Component, pageProps, router }: AppProps) {
   const [allGameList, setAllGameList] = useState([]);
   const [gameListByGenres, setGameListByGenres] = useState([]);
