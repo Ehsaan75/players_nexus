@@ -48,5 +48,15 @@ const getGameScreenshots = async (gameId: number) => {
     throw error;
   }
 };
+const getGameTrailer = async (gameId: number) => {
+  try {
+    const response = await axiosInstance.get(`/games/${gameId}/movies?key=${key}`);
+    return response.data.results;
+  } catch (error) {
+    console.error("Error fetching game trailer:", error);
+    throw error;
+  }
+};
 
-export default { getGames, getGenreList, getGameListByGenreId, getGameBySlug, getGameScreenshots };
+export default { getGames, getGenreList, getGameListByGenreId, getGameBySlug, getGameScreenshots, getGameTrailer };
+
