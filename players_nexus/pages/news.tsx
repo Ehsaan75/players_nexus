@@ -1,4 +1,3 @@
-// News.tsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import NewsCard from '../components/NewsCard';
@@ -18,7 +17,7 @@ const fetchGamingNews = async (category: string): Promise<Article[]> => {
       token: apiKey,
       lang: 'en',
       country: 'us',
-      max: 20
+      max: 10
     }
   });
 
@@ -46,15 +45,22 @@ const News: React.FC = () => {
     setCurrentCategory(category);
   };
 
-  return (
-    <div>
-      <NewsHeading title="Games" onClick={() => handleCategoryChange('gaming')} />
-      <NewsHeading title="PlayStation" onClick={() => handleCategoryChange('PlayStation')} />
-      <NewsHeading title="Xbox" onClick={() => handleCategoryChange('Xbox')} />
-      <NewsHeading title="Nintendo" onClick={() => handleCategoryChange('Nintendo')} />
-      <NewsHeading title="PC" onClick={() => handleCategoryChange('PC')} />
+  const categories = ['Gaming', 'PlayStation', 'Xbox', 'Nintendo', 'PC'];
 
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+  return (
+    <div className="mx-auto max-w-9xl px-4 sm:px-6 lg:px-8 pt-6">
+      <div className="flex justify-center mb-4 gap-4">
+        {categories.map((category) => (
+          <NewsHeading 
+            key={category}
+            title={category}
+            isActive={currentCategory === category}
+            onClick={() => handleCategoryChange(category)}
+          />
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
         {articles.map((article, index) => (
           <NewsCard key={index} article={article} />
         ))}

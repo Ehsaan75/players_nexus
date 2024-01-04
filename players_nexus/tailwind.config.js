@@ -8,7 +8,11 @@ module.exports = {
     "./styles/**/*.css",
   ],
   theme: {
-    extend: {},
+    extend: {
+      maxWidth: {
+        '9xl': '96rem', // This adds a 9xl size, 96rem is equivalent to 1536px
+      }
+    },
   },
   plugins: [],
 };

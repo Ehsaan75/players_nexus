@@ -1,4 +1,3 @@
-// NewsCard.tsx
 import React from 'react';
 
 interface Article {
@@ -12,14 +11,22 @@ interface NewsCardProps {
 }
 
 const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
-  const placeholderImage = '/path-to-your-placeholder-image.jpg'; // Replace with your placeholder image path
+  const placeholderImage = '/path-to-your-placeholder-image.jpg';
 
   return (
-    <div style={{ margin: '10px', padding: '10px', border: '1px solid black', cursor: 'pointer', maxWidth: '300px' }}
-         onClick={() => window.open(article.url, '_blank')}>
-      <img src={article.image || placeholderImage} alt={article.title} style={{ width: '100%', height: 'auto' }} />
-      <h2>{article.title}</h2>
-      {/* Add more article details here if needed */}
+    <div 
+      className="m-2 p-2 cursor-pointer w-full h-52 bg-[#76a8f75e] rounded-lg flex overflow-hidden hover:scale-105 transition-transform duration-300"
+      onClick={() => window.open(article.url, '_blank')}
+    >
+      <img 
+        src={article.image || placeholderImage} 
+        alt={article.title} 
+        className="w-1/2 h-full object-cover rounded-lg"
+      />
+      <div className="w-1/2 p-4 flex flex-col justify-between">
+        <h2 className="text-lg font-bold text-white">{article.title}</h2>
+        {/* Add more text elements here if needed */}
+      </div>
     </div>
   );
 };
