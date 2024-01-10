@@ -1,5 +1,4 @@
-// GenreList.tsx
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import globalapi from '../services/globalapi';
 
 interface Genre {
@@ -10,32 +9,37 @@ interface Genre {
 
 interface GenreListProps {
   onGenreSelect: (id: number, name: string) => void;
-  isSearchActive: boolean;
 }
 
-const GenreList: React.FC<GenreListProps> = ({ onGenreSelect, isSearchActive }) => {
+const GenreList: React.FC<GenreListProps> = ({ onGenreSelect }) => {
   const [genreList, setGenreList] = useState<Genre[]>([]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const isMounted = useRef(true);
 
   useEffect(() => {
     const getGenreList = async () => {
       try {
         const response = await globalapi.getGenreList();
-        setGenreList(response.data.results);
-        onGenreSelect(4, "Action"); // Default genre selection
+        if (isMounted.current) {
+          setGenreList(response.data.results);
+          const actionGenreIndex = response.data.results.findIndex(genre => genre.name === 'Action');
+          if (actionGenreIndex !== -1) {
+            setActiveIndex(actionGenreIndex);
+            onGenreSelect(response.data.results[actionGenreIndex].id, "Action");
+          }
+        }
       } catch (error) {
         console.error("Error fetching genres:", error);
       }
     };
 
     getGenreList();
-  }, []);
 
-  useEffect(() => {
-    if (isSearchActive) {
-      setActiveIndex(null);
-    }
-  }, [isSearchActive]);
+    return () => {
+      isMounted.current = false;
+    };
+  }, [onGenreSelect]);
 
   return (
     <div className="sticky top-0 h-screen overflow-y-auto">
@@ -48,7 +52,7 @@ const GenreList: React.FC<GenreListProps> = ({ onGenreSelect, isSearchActive }) 
             onGenreSelect(item.id, item.name);
           }}
           className={`group flex gap-2 items-center mb-2 cursor-pointer hover:bg-gray-400 p-2 rounded-lg ${
-            activeIndex === index && !isSearchActive ? "bg-gray-500" : "transparent"
+            activeIndex === index ? "bg-gray-500" : "transparent"
           }`}
         >
           <img

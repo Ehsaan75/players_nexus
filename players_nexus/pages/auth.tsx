@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { GithubAuthProvider } from "firebase/auth";
-import auth from "./../firebase/clientApp";
+import auth from "../firebase/firebase";
 
 const uiConfig = {
   signInSuccessUrl: "/",

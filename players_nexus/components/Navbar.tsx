@@ -1,8 +1,14 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import { useSession, signOut } from 'next-auth/react';
 
 function Navbar() {
   const router = useRouter();
+  const { data: session } = useSession();
+
+  const handleLogout = () => {
+    signOut();
+  };
 
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -18,7 +24,15 @@ function Navbar() {
           </span>
         </a>
         <div className="flex md:order-2">
-          {/* Search button and other controls can be added here */}
+          {session && (
+            <button
+              onClick={handleLogout}
+              className="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700"
+            >
+              Logout
+            </button>
+          )}
+          {/* Other controls can be added here */}
         </div>
         <ul className="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
           <li>
