@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import globalapi from '../../services/globalapi';
-import GameDescription from '../../components/GameDescription'; // Import GameDescription component
-import PublishersList from '../../components/PublishersList'; // Import PublishersList component
+import GameDescription from '../../components/GameDescription';
+import PublishersList from '../../components/PublishersList';
 
 type PublisherType = {
   id: number;
@@ -13,7 +16,6 @@ type GameInfoType = {
   id: number;
   name: string;
   description_raw: string;
-  reddit_url?: string;
   background_image: string;
   background_image_additional: string;
   publishers: PublisherType[];
@@ -48,6 +50,15 @@ const GameInfo = () => {
     }
   }, [slug]);
 
+  const sliderSettings = {
+    dots: false, // Remove dots from the bottom of the carousel
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    adaptiveHeight: true
+  };
+
   if (!gameInfo) {
     return <div className="text-center text-white">Loading...</div>;
   }
@@ -68,32 +79,26 @@ const GameInfo = () => {
         </div>
         <div className="w-3/4 ml-8">
           <h1 className="text-5xl text-white font-bold mb-2">{gameInfo.name}</h1>
-          <h2 className="text-xl text-white font-light mb-4">By <PublishersList publishers={gameInfo.publishers} /></h2>
+          <h2 className="text-2xl text-white font-light mb-4">By <PublishersList publishers={gameInfo.publishers} /></h2>
           <GameDescription description={gameInfo.description_raw} />
-          {gameInfo.reddit_url && (
-            <a href={gameInfo.reddit_url}
-               target="_blank"
-               rel="noopener noreferrer"
-               className="text-blue-500 underline">
-              Reddit Discussion
-            </a>
-          )}
         </div>
       </div>
   
-      <div className="screenshot-container mx-auto px-4 py-4 relative z-10">
+      <div className="screenshot-container left-5 top-100 px-4 py-4 relative z-10" 
+           style={{ maxWidth: '600px', maxHeight: '400px' }}> {/* Adjust size here */}
         <h3 className="text-2xl text-white font-bold mb-4">Screenshots</h3>
-        <div className="grid grid-cols-2 gap-4">
+        <Slider {...sliderSettings}>
           {screenshots.map((screenshot) => (
-            <div key={screenshot.id} className="screenshot-wrapper rounded-lg overflow-hidden">
+            <div key={screenshot.id} className="screenshot-wrapper" 
+                 style={{ height: '100%', width: '100%' }}>
               <img
                 src={screenshot.image}
                 alt="Game Screenshot"
-                className="rounded-lg w-full h-auto object-contain"
+                className="rounded-lg w-full h-full object-cover"
               />
             </div>
           ))}
-        </div>
+        </Slider>
       </div>
     </div>
   );

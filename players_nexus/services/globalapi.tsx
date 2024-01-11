@@ -31,8 +31,8 @@ const getGameScreenshots = async (gameId: number) => {
   return response.data.results;
 };
 
-const getGameTrailer = async (gameId: number) => {
-  const response = await axiosInstance.get(`/games/${gameId}/movies?key=${key}`);
+const getGameTrailer = async (slug: string) => {
+  const response = await axiosInstance.get(`/games/${slug}/movies?key=${key}`);
   return response.data.results;
 };
 
