@@ -42,6 +42,8 @@ const GamesByGenresId: React.FC<GamesByGenresIdProps> = ({
     return null;
   }
 
+  const placeholderImage = '/no_image.jpg'; // Use default image if no image is found
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
       {gameList.map((item) => (
@@ -51,7 +53,7 @@ const GamesByGenresId: React.FC<GamesByGenresIdProps> = ({
           onClick={() => navigateToGame(item.slug)}
         >
           <img
-            src={item.background_image}
+            src={item.background_image || placeholderImage} // Use default image if no image is found
             className="w-full h-80 rounded-xl object-cover mb-4"
             alt={item.name}
           />

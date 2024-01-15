@@ -12,11 +12,9 @@ interface PublishersListProps {
 const PublishersList: React.FC<PublishersListProps> = ({ publishers }) => {
   const renderPublishers = () => {
     if (publishers.length > 0) {
-      return publishers.map((publisher, index) => (
-        <span key={publisher.id} className="font-bold">
-          {publisher.name}{index < publishers.length - 1 ? ', ' : ''}
-        </span>
-      ));
+      // Only rendering the first publisher
+      const publisher = publishers[0];
+      return <span key={publisher.id} className="font-bold">{publisher.name}</span>;
     }
     return 'Unknown Publisher';
   };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 
 interface Article {
   title: string;
@@ -11,7 +12,9 @@ interface NewsCardProps {
 }
 
 const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
-  const placeholderImage = '/path-to-your-placeholder-image.jpg';
+  const router = useRouter();
+
+  const placeholderImage = '/no-image.jpg'; // Use default image if no image is found
 
   return (
     <div 
@@ -19,7 +22,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
       onClick={() => window.open(article.url, '_blank')}
     >
       <img 
-        src={article.image || placeholderImage} 
+        src={article.image || placeholderImage} // Use default image if no image is found
         alt={article.title} 
         className="w-1/2 h-full object-cover rounded-lg"
       />

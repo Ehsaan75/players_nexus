@@ -15,7 +15,7 @@ interface Game {
   slug: string;
 }
 
-export default function Home() {
+const Home: React.FC = () => {
   const router = useRouter();
   const { status } = useSession({
     required: true,
@@ -30,6 +30,7 @@ export default function Home() {
   const [heading, setHeading] = useState<string>('Action Games');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedGenreId, setSelectedGenreId] = useState<number | null>(4);
+  const [isGenreListVisible, setIsGenreListVisible] = useState(false);
 
   const isMounted = useRef(true);
 
@@ -79,13 +80,25 @@ export default function Home() {
     fetchGamesByPage(newPage);
   };
 
+  const toggleGenreList = () => {
+    setIsGenreListVisible(prev => !prev);
+  };
+
   return (
-    <div className="p-8">
-      <div className="grid grid-cols-4 gap-4">
-        <div className="col-span-1">
-          <GenreList onGenreSelect={handleGenreSelect} />
-        </div>
-        <div className="col-span-3">
+    <div className="p-8 relative">
+      <button 
+        onClick={toggleGenreList} 
+        className="fixed left-2 top-1/2 transform -translate-y-1/2 z-40 bg-gray-800 text-white px-3 py-2 rounded-full lg:hidden"
+        aria-label={isGenreListVisible ? 'Hide genres' : 'Show genres'}
+      >
+        {isGenreListVisible ? '← Hide' : 'Show →'}
+      </button>
+
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+        <GenreList onGenreSelect={handleGenreSelect} isVisible={isGenreListVisible} onToggle={function (): void {
+          throw new Error('Function not implemented.');
+        } } />
+        <div className="col-span-1 lg:col-span-3">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-4xl font-bold">{heading}</h2>
             <div className="flex items-center space-x-2">
@@ -116,6 +129,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
 
-Home.requireAuth = true;
+export default Home;

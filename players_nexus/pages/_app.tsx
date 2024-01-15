@@ -7,7 +7,6 @@ import Navbar from "../components/Navbar"; // Update the path if necessary
 import LoadingCircle from "../components/LoadingCircle"; // Update the path if necessary
 import globalapi from "../services/globalapi"; // Update the path if necessary
 import "../styles/tailwind.css"; // Update the path if necessary
-import { AxiosResponse } from "axios";
 
 interface Game {
   id: number;

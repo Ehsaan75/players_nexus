@@ -16,6 +16,11 @@ const getGenreList = async () => {
   return response;
 };
 
+const getGameStores = async (slug: string) => {
+  const response = await axiosInstance.get(`/games/${slug}/stores?key=${key}`);
+  return response.data.results; // Assuming the API response has a 'results' field
+};
+
 const getGameListByGenreId = async (genreId: number, page: number = 1) => {
   const response = await axiosInstance.get(`/games?key=${key}&genres=${genreId}&page=${page}&page_size=20`);
   return response;
@@ -48,5 +53,6 @@ export default {
   getGameBySlug, 
   getGameScreenshots, 
   getGameTrailer,
-  searchGamesByName
+  searchGamesByName,
+  getGameStores
 };
