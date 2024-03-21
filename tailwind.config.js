@@ -10,8 +10,8 @@ module.exports = {
   theme: {
     extend: {
       maxWidth: {
-        '9xl': '96rem', // This adds a 9xl size, 96rem is equivalent to 1536px
-      }
+        "9xl": "96rem", // This adds a 9xl size, 96rem is equivalent to 1536px
+      },
     },
   },
   plugins: [],

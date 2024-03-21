@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const fetchTopGamingHeadlines = async () => {
   try {
-    const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY; // Replace with your API Key
+    const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY; 
     const response = await axios.get('https://newsapi.org/v2/top-headlines', {
       params: {
         category: 'gaming',

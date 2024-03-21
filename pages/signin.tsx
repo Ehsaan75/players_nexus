@@ -1,24 +1,30 @@
-import React, { useState } from 'react';
-import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/router';
-import Image from 'next/image';
+import React, { useState } from "react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
+import Image from "next/image";
 
 export default function Signin() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // Add state for the error message
   const router = useRouter();
 
   const handleSignIn = async () => {
-    const result = await signIn('credentials', {
-      redirect: false, // Disable automatic redirection
+    const result = await signIn("credentials", {
+      redirect: false,
       email,
       password,
     });
 
     if (result?.ok) {
-      router.push('/'); // Redirect to homepage on successful sign in
+      if (typeof window !== undefined) {
+        localStorage.setItem("email", email);
+      }
+
+      router.push("/"); // Redirect to homepage on successful sign in
     } else {
-      // Handle sign in failure (e.g., show an error message)
+      // Update to show an error message when sign in fails
+      setErrorMessage("Incorrect email or password.");
     }
   };
 
@@ -29,12 +35,21 @@ export default function Signin() {
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
             Sign in to your account
           </h2>
+          {/* Display error message if sign in fails */}
+          {errorMessage && (
+            <p className="mt-4 text-center text-sm text-red-600">
+              {errorMessage}
+            </p>
+          )}
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <div className="space-y-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium leading-6 text-white"
+              >
                 Email address
               </label>
               <div className="mt-2">
@@ -52,11 +67,17 @@ export default function Signin() {
 
             <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium leading-6 text-white"
+                >
                   Password
                 </label>
                 <div className="text-sm">
-                  <div onClick={() => router.push('/forgot-password')} className="cursor-pointer font-semibold text-indigo-400 hover:text-indigo-300">
+                  <div
+                    onClick={() => router.push("/forgot-password")}
+                    className="cursor-pointer font-semibold text-indigo-400 hover:text-indigo-300"
+                  >
                     Forgot password?
                   </div>
                 </div>
@@ -86,8 +107,11 @@ export default function Signin() {
           </div>
 
           <p className="mt-10 text-center text-sm text-gray-400">
-            Not a member?{' '}
-            <button onClick={() => router.push('/signup')} className="font-semibold leading-6 text-indigo-400 hover:text-indigo-300">
+            Not a member?{" "}
+            <button
+              onClick={() => router.push("/signup")}
+              className="font-semibold leading-6 text-indigo-400 hover:text-indigo-300"
+            >
               Sign Up
             </button>
           </p>

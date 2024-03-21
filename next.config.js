@@ -1,7 +1,12 @@
+// next.config.js
 module.exports = {
-    images: {
-      domains: ['media.rawg.io'], // Add other domains as needed
-    },
-    // You can add other Next.js configurations here as needed
-  };
-  
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*",
+      },
+    ],
+  },
+  // other configurations...
+};

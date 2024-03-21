@@ -17,16 +17,15 @@ const StoreLinks: React.FC<StoreLinksProps> = ({ stores }) => {
     if (/nintendo\.com/.test(url)) return 'Nintendo';
     if (/steampowered\.com/.test(url)) return 'Steam';
     if (/gog\.com/.test(url)) return 'GOG';
-    if (/epicgames\.com/.test(url)) return 'Epic Games'; // Changed here
-    if (/play.google\.com/.test(url)) return 'Google Play'; // Changed here
+    if (/epicgames\.com/.test(url)) return 'Epic Games';
+    if (/play.google\.com/.test(url)) return 'Google Play'; 
     if (/apple\.com/.test(url)) return 'Apple';
     return 'Unknown';
   };
 
   const getPlatformIcon = (platformName: string) => {
-    // Handle special cases for 'Epic Games' and 'Google Play'
     let iconName = platformName.toLowerCase().replace(/\s/g, '');
-    return `/images/${iconName}.png`; // Path to icon images
+    return `/images/${iconName}.png`; 
   };
 
   return (
@@ -35,17 +34,17 @@ const StoreLinks: React.FC<StoreLinksProps> = ({ stores }) => {
       <ul>
         {stores.map((store) => {
           const platformName = getPlatformName(store.url);
-          if (platformName === 'Unknown') return null; // Do not display 'Unknown' platforms
+          if (platformName === 'Unknown') return null; 
 
           const iconSrc = getPlatformIcon(platformName);
           return (
             <li key={store.id} className="mb-2 flex items-center">
-                           <div className="relative h-6 w-6 mr-2"> {/* Adjust width and height as needed */}
+                           <div className="relative h-6 w-6 mr-2"> 
                 <Image 
                   src={iconSrc} 
                   alt={platformName} 
                   layout="fill"
-                  objectFit="contain" // Maintain aspect ratio
+                  objectFit="contain" 
                 />
               </div>
               <a href={store.url} target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-500">

@@ -2,7 +2,7 @@ import React from "react";
 
 function LoadingCircle() {
   return (
-    <div className="flex justify-center items-end pt-10">
+    <div className="fixed h-screen w-screen top-0 left-0 flex justify-center items-center bg-[#111726] z-50">
       <div role="status">
         <svg
           aria-hidden="true"

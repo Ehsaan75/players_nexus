@@ -6,11 +6,10 @@
     "outDir": "lib",
     "sourceMap": true,
     "strict": true,
-    "target": "es2017",
-    "esModuleInterop": true,    // Ensures compatibility with ES6 modules
-    "moduleResolution": "node", // Correctly resolve modules like a Node.js app
-    "allowSyntheticDefaultImports": true // Allow default imports from modules with no default export
+    "target": "es2017"
   },
   "compileOnSave": true,
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

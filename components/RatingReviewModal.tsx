@@ -1,6 +1,6 @@
-// RatingReviewModal.tsx
-import React, { useState } from 'react';
-import StarRating from './StarRatings'; // Ensure this import path is correct
+import React, { useState } from "react";
+import StarRating from "./StarRatings";
+import { toast } from "react-toastify";
 
 interface RatingReviewModalProps {
   showModal: boolean;
@@ -10,12 +10,12 @@ interface RatingReviewModalProps {
   userId: string | undefined;
 }
 
-const RatingReviewModal: React.FC<RatingReviewModalProps> = ({ 
-  showModal, 
-  setShowModal, 
-  onSubmit, 
-  gameId, 
-  userId 
+const RatingReviewModal: React.FC<RatingReviewModalProps> = ({
+  showModal,
+  setShowModal,
+  onSubmit,
+  gameId,
+  userId,
 }) => {
   const [overall, setOverall] = useState(0);
   const [story, setStory] = useState(0);
@@ -23,11 +23,27 @@ const RatingReviewModal: React.FC<RatingReviewModalProps> = ({
   const [graphics, setGraphics] = useState(0);
   const [audio, setAudio] = useState(0);
   const [multiplayer, setMultiplayer] = useState(0);
-  const [reviewTitle, setReviewTitle] = useState('');
-  const [reviewText, setReviewText] = useState('');
-  const [activeTab, setActiveTab] = useState('Rate');
+  const [reviewTitle, setReviewTitle] = useState("");
+  const [reviewText, setReviewText] = useState("");
+  const [activeTab, setActiveTab] = useState("Rate");
 
   const handleSubmit = async () => {
+    if (
+      (activeTab === "Review" &&
+        (overall === 0 ||
+          story === 0 ||
+          gameplay === 0 ||
+          graphics === 0 ||
+          audio === 0 ||
+          multiplayer === 0)) ||
+      (activeTab === "Rate" && overall === 0)
+    ) {
+      toast.error("Please provide ratings for all aspects.", {
+        toastId: "force-ratings",
+      });
+      return;
+    }
+
     const ratingData = {
       userId,
       gameId,
@@ -41,7 +57,7 @@ const RatingReviewModal: React.FC<RatingReviewModalProps> = ({
       reviewText,
     };
     onSubmit(ratingData);
-    setShowModal(false); // Close the modal
+    setShowModal(false);
   };
 
   if (!showModal) return null;
@@ -52,24 +68,31 @@ const RatingReviewModal: React.FC<RatingReviewModalProps> = ({
         <div className="flex justify-between items-start mb-4">
           <div className="flex space-x-4">
             <button
-              className={`text-xl font-bold ${activeTab === 'Rate' ? 'underline' : ''}`}
-              onClick={() => setActiveTab('Rate')}
+              className={`text-xl font-bold ${
+                activeTab === "Rate" ? "underline" : ""
+              }`}
+              onClick={() => setActiveTab("Rate")}
             >
               Rate
             </button>
             <button
-              className={`text-xl font-bold ${activeTab === 'Review' ? 'underline' : ''}`}
-              onClick={() => setActiveTab('Review')}
+              className={`text-xl font-bold ${
+                activeTab === "Review" ? "underline" : ""
+              }`}
+              onClick={() => setActiveTab("Review")}
             >
               Review
             </button>
           </div>
-          <button onClick={() => setShowModal(false)} className="text-xl hover:text-gray-500">
+          <button
+            onClick={() => setShowModal(false)}
+            className="text-xl hover:text-gray-500"
+          >
             &times;
           </button>
         </div>
 
-        {activeTab === 'Rate' && (
+        {activeTab === "Rate" && (
           <div className="flex flex-col space-y-8 mb-8">
             <div>
               <label className="text-white text-lg font-bold">Overall:</label>
@@ -92,13 +115,15 @@ const RatingReviewModal: React.FC<RatingReviewModalProps> = ({
               <StarRating rating={audio} setRating={setAudio} />
             </div>
             <div>
-              <label className="text-white text-lg font-bold">Multiplayer:</label>
+              <label className="text-white text-lg font-bold">
+                Multiplayer:
+              </label>
               <StarRating rating={multiplayer} setRating={setMultiplayer} />
             </div>
           </div>
         )}
 
-        {activeTab === 'Review' && (
+        {activeTab === "Review" && (
           <div className="flex flex-col space-y-4 mb-4">
             <input
               type="text"
@@ -110,7 +135,7 @@ const RatingReviewModal: React.FC<RatingReviewModalProps> = ({
             <textarea
               placeholder="Write your review"
               className="w-full p-2 rounded bg-gray-800 border border-gray-600"
-              rows= {4}
+              rows={4}
               value={reviewText}
               onChange={(e) => setReviewText(e.target.value)}
             ></textarea>

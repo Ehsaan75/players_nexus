@@ -1,4 +1,3 @@
-// Pagination.tsx
 import React from 'react';
 
 interface PaginationProps {
@@ -16,7 +15,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
           className="text-lg font-bold px-4 py-2 border rounded hover:bg-gray-200"
           aria-label="Previous Page"
         >
-          &lt;  {/* This is the HTML code for the less-than sign which resembles an arrow */}
+          &lt;  
         </button>
       )}
 
@@ -26,7 +25,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
           className="text-lg font-bold px-4 py-2 border rounded hover:bg-gray-200"
           aria-label="Next Page"
         >
-          &gt;  {/* This is the HTML code for the greater-than sign which resembles an arrow */}
+          &gt;  
         </button>
       )}
     </div>

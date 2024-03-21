@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Players Nexux
 
-## Getting Started
-
-First, run the development server:
+> The interconnected network of gamers, fostering community, competition, and collaboration in the gaming world.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+NEXT_PUBLIC_FIREBASE_API_KEY="AIzaSyCHoJ28FxYcJNMIcdll4bS4ZIxs_pupbkY"
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN="playersnexus.firebaseapp.com"
+NEXT_PUBLIC_FIREBASE_PROJECT_ID="playersnexus"
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET="playersnexus.appspot.com"
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID="964308791253"
+NEXT_PUBLIC_FIREBASE_APP_ID="1:964308791253:web:40e16e5e18316df5c7175c"
+
+NEXT_PUBLIC_GNEWS_API_KEY="111d7634233983eb25530b1b8c7c0dee"
+NEXT_PUBLIC_NEWS_API_KEY="111d7634233983eb25530b1b8c7c0dee"
+
+NEXT_PUBLIC_API_KEY="6c68001659ce438ca5fb1138db2115ef"
+NEXT_PUBLIC_EMBED_KEY="https://34bdd3004da0fad89e.gradio.live/"
+
+NEXT_PUBLIC_MEASUREMENT_ID="G-9EPMT7R3DS"
+NEXT_PUBLIC_TWITCH_CLIENT_ID="kjw0tdi074j96el2in88h0a9pqg9qi"
+
+
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="ad8e5695ec5750d4b398af64a18b1e1e"
+
+TWITCH_OAUTH_TOKEN="Bearer pm2zffxh4s9l87hro2116tj2nwpkc6"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Reference Website
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[x] Letter Box: [Click Here](https://letterboxd.com)

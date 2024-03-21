@@ -22,7 +22,7 @@ const StarRating: React.FC<StarRatingProps> = ({ rating, setRating }) => {
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               viewBox="0 0 24 24"
-              className="w-14 h-14" // Change this size to customize the size of the stars
+              className="w-14 h-14" 
             >
               <path d="M12 .587l3.412 6.912 7.588 1.104-5.5 5.357 1.3 7.56-6.8-3.578-6.8 3.578 1.3-7.56-5.5-5.357 7.588-1.104z" />
             </svg>
