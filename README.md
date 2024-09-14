@@ -5,7 +5,7 @@ Players Nexus is a gaming social app where users can rate and review games they'
 ## Live Application
 
 You can access the live version of the Players Nexus app here:
-[Players Nexus - Live](https://players.nexus.vercel.app)
+[Players Nexus - Live](https://playersnexus.vercel.app)
 
 ## Features
 
