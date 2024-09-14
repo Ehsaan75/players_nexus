@@ -12,6 +12,7 @@ You can access the live version of the Players Nexus app here:
 - **Game Reviews & Ratings**: Users can review and rate games they've played.
 - **Friend Profiles**: View profiles of your friends to see what games they’ve played and their ratings.
 - **News Feed**: Stay updated with a feed of gaming news based on your favorite consoles.
+- **Sentiment Analysis for Reviews**: Reviews are analysed for sentiment, providing feedback on the emotion conveyed in the review.
 - **Firebase Integration**: Authentication and database management via Firebase.
 - **External APIs**: Integration with GNews and NewsAPI to fetch the latest gaming news.
 
@@ -65,7 +66,6 @@ NEXT_PUBLIC_EMBED_URL="Your_Embed_URL"
 # NextAuth Configuration
 NEXTAUTH_URL="http://localhost:3000"
 NEXTAUTH_SECRET="Your_NextAuth_Secret"
-
 ```
 
 Make sure to replace the placeholder values with your actual API keys and credentials.
