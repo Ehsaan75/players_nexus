@@ -62,15 +62,10 @@ NEXT_PUBLIC_NEWS_API_KEY="Your_NewsAPI_Key"
 NEXT_PUBLIC_API_KEY="Your_Custom_API_Key"
 NEXT_PUBLIC_EMBED_URL="Your_Embed_URL"
 
-# Twitch Integration
-NEXT_PUBLIC_TWITCH_CLIENT_ID="Your_Twitch_Client_ID"
-
 # NextAuth Configuration
 NEXTAUTH_URL="http://localhost:3000"
 NEXTAUTH_SECRET="Your_NextAuth_Secret"
 
-# Twitch OAuth Token
-TWITCH_OAUTH_TOKEN="Your_Twitch_OAuth_Token"
 ```
 
 Make sure to replace the placeholder values with your actual API keys and credentials.
